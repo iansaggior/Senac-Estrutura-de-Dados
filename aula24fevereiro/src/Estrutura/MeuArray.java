@@ -29,7 +29,7 @@ public class MeuArray {
             meio = (fim + inicio)/2;
             if (id == lista[meio].getId()) {
                 return lista[meio];
-            } else if (id < lista[meio].getId()) {
+            } else if (id > lista[meio].getId()) {
                 inicio = meio + 1;
             } else {
                 fim = meio - 1;
