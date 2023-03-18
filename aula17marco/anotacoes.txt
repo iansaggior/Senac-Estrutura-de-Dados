@@ -1,0 +1,12 @@
+lista simplesmente ligada
+contiguidade (vizinhança)
+    |
+    |
+    V
+   Lógica
+
+
+
+desvantagens: 
+    remover
+    gerenciar memória
