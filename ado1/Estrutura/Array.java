@@ -1,23 +1,21 @@
 package Estrutura;
 
 public class Array {
-    
-    /**
-     * Array de objetos "livros"
-     */
+
+    // Array de objetos "livros"
     public static Livro[] lista = new Livro[5];
-    public static int indice = 0;
+    public static int marca = 0;
 
     /**
      * Função para inserir um novo livro
      * @param livro
      */
     public static void inserirLivro(Livro livro) {
-        if (indice < lista.length) {
-            lista[indice++] = livro;
+        if (marca < lista.length) {
+            lista[marca++] = livro;
         } else{
             lista = aumentarArray();
-            lista[indice++] = livro;
+            lista[marca++] = livro;
         }
     }
 
@@ -36,8 +34,8 @@ public class Array {
      * @param id
      */
     public static void remover(int id) {
-        Livro[] listaNova = new Livro[indice];
-        for (int i = 0, j = 0; i < indice; i++) {
+        Livro[] listaNova = new Livro[marca];
+        for (int i = 0, j = 0; i < marca; i++) {
             if (lista[i].getId() != id) {
                 listaNova[j++] = lista[i];
             }
@@ -50,7 +48,7 @@ public class Array {
      * @return livros
      */
     public static void mostrar() {
-        quickSort(0, indice - 1);
+        quickSort(0, marca - 1);
         int controle = 0;
         for (Livro i : lista) {
             if (i != null) {
@@ -60,18 +58,15 @@ public class Array {
                 controle++;
             }
         }
-        if (controle == indice) {
-            System.out.println("[vazio]");
+        if (controle == marca) {
+            System.out.println("[vetor vazio]");
         }
     }
 
-
-
-
     /**
-     * Implementação do algoritmo QuickSort para ordenação de objetos Livro por título
-     * @param inicio o índice de início da partição a ser ordenada
-     * @param fim o índice de fim da partição a ser ordenada
+     * Ordenação por título usando o QuickSort
+     * @param inicio
+     * @param fim
      */
     public static void quickSort(int inicio, int fim) {
         if (inicio < fim) {
@@ -82,10 +77,9 @@ public class Array {
     }
 
     /**
-     * Realiza a partição do array de Livros para o algoritmo QuickSort por título
-     * @param inicio o índice de início da partição a ser ordenada
-     * @param fim o índice de fim da partição a ser ordenada
-     * @return a posição do pivô após a partição
+     * Realiza a partição do array para o QuickSort por título
+     * @param inicio
+     * @param fim 
      */
     private static int particao(int inicio, int fim) {
         Livro pivo = lista[inicio];
@@ -115,9 +109,9 @@ public class Array {
      * @return o livro encontrado ou não
      */
     public static Livro buscaBinariaPorTitulo(String titulo) {
-        quickSort(0, indice - 1);
+        quickSort(0, marca - 1);
         int inicio = 0;
-        int fim = indice - 1;
+        int fim = marca - 1;
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
             int comparacao = lista[meio].getTitulo().compareToIgnoreCase(titulo);
