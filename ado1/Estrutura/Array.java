@@ -1,5 +1,7 @@
 package Estrutura;
 
+import java.util.Arrays;
+
 public class Array {
 
     // Array de objetos "livros"
@@ -35,13 +37,18 @@ public class Array {
      */
     public static boolean remover(int id) {
         Livro[] listaNova = new Livro[indice];
-        for (int i = 0, j = 0; i < indice; i++) {
-            if (lista[i].getId() != id) {
-                listaNova[j++] = lista[i];
+        int contador = 0;
+        for (int i = 0; i < indice; i++) {
+            if (lista[i] != null && lista[i].getId() != id) {
+                listaNova[contador++] = lista[i];
             }
         }
-        lista = listaNova;
-        return false;
+        if (contador == indice) {
+            return false;
+        }
+        lista = Arrays.copyOf(listaNova, contador);
+        indice = contador;
+        return true;
     }
 
     /**
@@ -51,10 +58,14 @@ public class Array {
     public static void mostrar() {
         quickSort(0, indice - 1);
         for (int i = 0; i < indice; i++) {
-            System.out.println(lista[i]);
+            try {
+                System.out.println(lista[i]);
+            } catch (NullPointerException e) {
+                System.out.println("Livro não inicializado");
+            }
         }
     }
-    
+
     /**
      * Ordenação por título usando o QuickSort
      * @param inicio
