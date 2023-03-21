@@ -20,9 +20,7 @@ public class Main {
         int id = 0;
         do {
             Array.quickSort(0, Array.indice - 1);
-            String[] opcoes = { "Cadastrar", "Remover", "Buscar", "Mostrar", "Sair" }; // lista as opções do
-                                                                                       // usuário(Cadastrar, Remover,
-                                                                                       // Buscar, Listar, Sair)
+            String[] opcoes = { "Cadastrar", "Remover", "Buscar", "Mostrar", "Sair" }; // lista as opções do usuário(Cadastrar, Remover, Buscar, Listar, Sair)
             ImageIcon customIcon = new ImageIcon("C:../ADO1/Cadastro/botaoo.png");
             opcao = JOptionPane.showOptionDialog(null, null, "Cadastro de Livros",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, customIcon, opcoes, opcoes[0]);
