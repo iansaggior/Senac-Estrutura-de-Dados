@@ -14,12 +14,18 @@ public class Lista {
      * Variavel auxiliar
     */
     private Elemento aux;
+    /**
+     * Variavel auxiliar para contar o ID
+    */
+    private int cont = 1;
     
     /**
      * Método criado para inserir objetos
      * @param objeto
     */
     public void inserir(Object objeto) {
+        Contato contato = (Contato)objeto;
+        contato.setId(cont++);
         if (inicio == null) { // verifica se a lista está vazia
             inicio = new Elemento(objeto, null);
             aux = inicio;
@@ -27,9 +33,9 @@ public class Lista {
             atual = new Elemento(objeto, null);
             aux.setProxm(atual);
             aux = atual; // fica junto do atual
-
         }
     }
+
 
     /**
      * Método criado para exibir a lista
