@@ -14,7 +14,7 @@ public class UsaLista {
     public static void main(String[] args) {
 
         int opcao, opcaoContato, opcaoProduto;
-        long telefone;
+        long celular;
         int idPesquisarContato, idRemoverContato, idPesquisarProduto, idRemoverProduto = 0;
         double precoProduto, desconto = 0;
 
@@ -66,13 +66,13 @@ public class UsaLista {
 
                         case 0: // opção para cadastrar um Contato
                             String nomeContato = JOptionPane.showInputDialog(null,
-                                    "Digite o nome do contato a ser Cadastrado:");
+                                    "Digite o nome do contato a ser cadastrado:");
                             String celularString = JOptionPane.showInputDialog(null,
-                                    "Digite o número de telefone do contato a ser Cadastrado:");
+                                    "Digite o número de telefone celular do contato a ser cadastrado:");
                             if (nomeContato != null || celularString != null) {
                                 try {
-                                    telefone = Long.parseLong(celularString);
-                                    Contato contato = new Contato(nomeContato, telefone);
+                                    celular = Long.parseLong(celularString);
+                                    Contato contato = new Contato(nomeContato, celular);
                                     listaContato.inserirContato(contato);
                                     JOptionPane.showMessageDialog(null, "Contato cadastrado com sucesso!");
                                 } catch (NumberFormatException e) {
@@ -156,26 +156,32 @@ public class UsaLista {
                     switch (opcaoProduto) {
 
                         case 0: // opção para cadastrar produtos na Lista
-                            String nomeProduto = JOptionPane.showInputDialog(null,
-                                    "Digite o nome do produto a ser cadastrado");
-                            String precoProdutoString = JOptionPane.showInputDialog(null,
-                                    "Digite o preço do produto a ser cadastrado");
-                            String categoriaProduto = JOptionPane.showInputDialog(null,
-                                    "Digite a categoria do produto a ser cadastrado");
-                            if (nomeProduto != null && precoProdutoString != null && categoriaProduto != null) {
-                                try {
-                                    precoProduto = Double.parseDouble(precoProdutoString);
-                                    Produto produto = new Produto(precoProduto, nomeProduto, categoriaProduto);
-                                    listaProduto.inserirProduto(produto);
-                                    JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!!");
-                                } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(null, "Preço é do tipo númerico!! Tente novamente!!");
-                                    continue;
+                        String nomeProduto = JOptionPane.showInputDialog(null,
+                                "Digite o nome do produto a ser cadastrado");
+                        String precoProdutoString = JOptionPane.showInputDialog(null,
+                                "Digite o preço do produto a ser cadastrado");
+                        Object[] opcoesCategoria = {"Alimenticia", "Higiene Pessoal", "Limpeza"}; // Opções de categoria pré-definidas
+                        int categoriaSelecionada = JOptionPane.showOptionDialog(null, "Selecione a categoria do produto",
+                                "Categoria do Produto", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoesCategoria, opcoesCategoria[0]);
+                                String  categoriaProduto = opcoesCategoria[categoriaSelecionada].toString();
+                            if (nomeProduto != null && precoProdutoString != null && categoriaProduto != null && categoriaProduto.length() > 0) {
+                                if(categoriaSelecionada >= 0) {
+                                    try {
+                                        precoProduto = Double.parseDouble(precoProdutoString);
+                                        Produto produto = new Produto(precoProduto, nomeProduto, categoriaProduto);
+                                        listaProduto.inserirProduto(produto);
+                                        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!!");
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null, "Preço é do tipo númerico!! Tente novamente!!");
+                                        continue;
+                                    }
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(null, "Falha a cadastrar o produto!");
                             }
-                            break;
+
+                        break;
+                    
 
                         case 1: // opção para pesquisar produtos na Lista
                             String idPesquisarProdutoString = JOptionPane
@@ -223,26 +229,33 @@ public class UsaLista {
                             }
                             break;
 
-                        case 3: // opção para aplicar descontos aos produtos da Lista
-                            categoriaProduto = JOptionPane
-                                    .showInputDialog("Digite a categoria do Produto que deseja aplicar o desconto:");
-                            String descontoString = JOptionPane
-                                    .showInputDialog("Digite o desconto(em porcentagem) que deseja aplicar");
-                            if (categoriaProduto != null && descontoString != null) {
-                                try {
-                                    desconto = Double.parseDouble(descontoString);
-                                    desconto = desconto / 100;
-                                    listaProduto.desconto(categoriaProduto, desconto);
-                                    JOptionPane.showMessageDialog(null, "Desconto aplicado com sucesso!!");
-                                } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(null,
-                                            "Desconto é do tipo númerico!! Tente novamente!!");
+                            case 3: // opção para aplicar descontos aos produtos da Lista
+                            String[] categorias = {"Alimenticia", "Higiene Pessoal", "Limpeza"}; // categorias pré-definidas
+                            int index = JOptionPane.showOptionDialog(null, "Selecione a categoria do produto que deseja aplicar o desconto:",
+                                    "Seleção de categoria", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, categorias, categorias[0]);
+                            if (index >= 0) {
+                                categoriaProduto = categorias[index];
+                                String descontoString = JOptionPane
+                                        .showInputDialog("Digite o desconto(em porcentagem) que deseja aplicar");
+                                if (descontoString != null) {
+                                    try {
+                                        desconto = Double.parseDouble(descontoString);
+                                        desconto = desconto / 100;
+                                        listaProduto.desconto(categoriaProduto, desconto);
+                                        JOptionPane.showMessageDialog(null, "Desconto aplicado com sucesso!!");
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null,
+                                                "Desconto é do tipo númerico!! Tente novamente!!");
+                                    }
+                        
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Falha ao aplicar o desconto nos produtos");
                                 }
-
                             } else {
-                                JOptionPane.showMessageDialog(null, "Falha ao aplicar o desconto nos produtos");
+                                JOptionPane.showMessageDialog(null, "Falha ao selecionar a categoria do produto");
                             }
                             break;
+                        
 
                         case 4: // opção para mostrar os produtos da Lista
                             System.out.println(
@@ -252,7 +265,7 @@ public class UsaLista {
 
                         default: // saindo
                             JOptionPane.showMessageDialog(null, "...SAINDO...");
-                        break;
+                            break;
                     }
 
                     break;
@@ -267,6 +280,5 @@ public class UsaLista {
                     break;
             }
         } while (opcao != 2);
-
     }
 }
