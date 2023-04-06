@@ -17,10 +17,6 @@ public class UsaLista {
         long telefone;
         int idPesquisarContato, idRemoverContato, idPesquisarProduto, idRemoverProduto = 0;
         double precoProduto, desconto = 0;
-        // int idRemoverContato = 0;
-        // double desconto = 0;
-        // int idPesquisarProduto = 0;
-        // int idRemoverProduto = 0;
 
         // INSERINDO OBJETOS NA LISTA
         Lista listaContato = new Lista();
