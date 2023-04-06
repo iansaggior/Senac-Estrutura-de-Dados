@@ -75,7 +75,8 @@ public class UsaLista {
                             } else {
                                 try {
                                     if (celularString.length() < 8 || celularString.length() > 9) { // Validação do tamanho de dígitos do número do celular
-                                        JOptionPane.showMessageDialog(null, "Número de celular inválido. O número deve ter 8 ou 9 dígitos!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, 
+                                        "Número de celular inválido. O número deve ter 8 ou 9 dígitos!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     } else {
                                         celular = Long.parseLong(celularString);
                                         Contato contato = new Contato(nomeContato, celular);
@@ -83,7 +84,8 @@ public class UsaLista {
                                         JOptionPane.showMessageDialog(null, "Contato cadastrado com sucesso!");
                                     }
                                 } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(null, "Telefone é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "Telefone é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                 }
                             }
                             break;
@@ -106,13 +108,16 @@ public class UsaLista {
                                             JOptionPane.showMessageDialog(null, obj);
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "Não foi possível pesquisar o contato com o ID: " + idPesquisarContato + "!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                        JOptionPane.showMessageDialog(null,
+                                        "Não foi possível pesquisar o contato com o ID: " + idPesquisarContato + "!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     }
                                 } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(null, "O ID deve ser um número inteiro válido!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "O ID deve ser um número inteiro válido!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Falha ao pesquisar o ID de um contato", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, 
+                                "Falha ao pesquisar o ID de um contato", "AVISO", JOptionPane.WARNING_MESSAGE);
                             }
                             break;
 
@@ -121,21 +126,24 @@ public class UsaLista {
                                     .showInputDialog("Digite o ID do Contato que deseja remover:");
                             if (idRemoverContatoString != null) {
                                 try {
-                                    idRemoverContato = Integer.parseInt(idRemoverContatoString); // conversão da variável idRemoverContatoString, que é uma String, para variável idRemoverContato, que é um inteiro
+                                    idRemoverContato = Integer.parseInt(idRemoverContatoString
+                                    ); // conversão da variável idRemoverContatoString, que é uma String, para variável idRemoverContato, que é um inteiro
                                     if (listaContato.removerIdContato(idRemoverContato)) {
                                         JOptionPane.showMessageDialog(null,
                                                 "Removeu o contato de ID " + idRemoverContato + " com sucesso!!");
                                     } else {
                                         JOptionPane.showMessageDialog(null,
-                                                "Não foi possivel remover o contato de ID: " + idRemoverContato + " porque ele não existe", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                "Não foi possivel remover o contato de ID: " + idRemoverContato + " porque ele não existe", "AVISO", JOptionPane.WARNING_MESSAGE);
 
                                     }
                                 } catch (Exception e) {
-                                    JOptionPane.showMessageDialog(null, "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     continue;
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Falha ao remover o contato", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, 
+                                "Falha ao remover o contato", "AVISO", JOptionPane.WARNING_MESSAGE);
                             }
                             break;
 
@@ -177,7 +185,7 @@ public class UsaLista {
                             int categoriaSelecionada = JOptionPane.showOptionDialog(null,
                                     "Selecione a categoria do produto","Categoria do Produto", JOptionPane.DEFAULT_OPTION, 
                                     JOptionPane.DEFAULT_OPTION, null,opcoesCategoria, opcoesCategoria[0]);
-                                if (nomeProduto != null && precoProdutoString != null && categoriaSelecionada != -1) { // verificando seu alguma variavel não foi preenchida
+                                if (nomeProduto != null && precoProdutoString != null && categoriaSelecionada != -1) {// verificando seu alguma variavel não foi preenchida
                                     try {
                                         categoriaProduto = opcoesCategoria[categoriaSelecionada].toString();
                                         precoProduto = Double.parseDouble(precoProdutoString);
@@ -190,7 +198,8 @@ public class UsaLista {
                                         continue;
                                     }
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Falha a cadastrar o produto!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "Falha a cadastrar o produto!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                 }
 
                             break;
@@ -199,19 +208,23 @@ public class UsaLista {
                             String idPesquisarProdutoString = JOptionPane.showInputDialog("Digite o ID do Produto que deseja pesquisar:");
                             if (idPesquisarProdutoString != null) {
                                 try {
-                                    idPesquisarProduto = Integer.parseInt(idPesquisarProdutoString); // conversão da variável idPesquisarProdutoString, que é uma String, para variável idPesquisarProduto, que é um inteiro
+                                    idPesquisarProduto = Integer.parseInt(idPesquisarProdutoString
+                                    ); // conversão da variável idPesquisarProdutoString, que é uma String, para variável idPesquisarProduto, que é um inteiro
                                     Object obj = listaProduto.pesquisarIdProduto(idPesquisarProduto)[0];
                                     if (obj == null) {
-                                        JOptionPane.showMessageDialog(null, "Não achou o produto com o ID: " + idPesquisarProduto + "!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, 
+                                        "Não achou o produto com o ID: " + idPesquisarProduto + "!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Produto com o ID " + idPesquisarProduto + " encontrado!!");
                                         JOptionPane.showMessageDialog(null, obj);
                                     }
                                 } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(null, "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Falha ao pesquisar o ID do Produto", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, 
+                                "Falha ao pesquisar o ID do Produto", "AVISO", JOptionPane.WARNING_MESSAGE);
                             }
                             break;
 
@@ -219,14 +232,18 @@ public class UsaLista {
                             String idRemoverProdutoString = JOptionPane.showInputDialog("Digite o ID do Produto que deseja remover:");
                             if (idRemoverProdutoString != null) {
                                 try {
-                                    idRemoverProduto = Integer.parseInt(idRemoverProdutoString); // conversão da variável idRemoverProdutoString, que é uma String, para variável idRemoverProduto, que é um inteiro
+                                    idRemoverProduto = Integer.parseInt(idRemoverProdutoString
+                                    ); // conversão da variável idRemoverProdutoString, que é uma String, para variável idRemoverProduto, que é um inteiro
                                     if (listaProduto.removerIdProduto(idRemoverProduto)) {
-                                        JOptionPane.showMessageDialog(null, "Removeu o produto de ID " + idRemoverProduto + " com sucesso!!");
+                                        JOptionPane.showMessageDialog(null, 
+                                        "Removeu o produto de ID " + idRemoverProduto + " com sucesso!!");
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "Não removeu o produto de ID: " + idRemoverProduto + " porque ele não existe", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, 
+                                        "Não removeu o produto de ID: " + idRemoverProduto + " porque ele não existe", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     }
                                 } catch (Exception e) {
-                                    JOptionPane.showMessageDialog(null, "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, 
+                                    "ID é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                     continue;
                                 }
                             } else {
@@ -254,7 +271,8 @@ public class UsaLista {
                                             "Desconto é do tipo númerico!! Tente novamente!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Falha ao aplicar o desconto nos produtos", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, 
+                                "Falha ao aplicar o desconto nos produtos", "AVISO", JOptionPane.WARNING_MESSAGE);
                             }
                             break;
 
