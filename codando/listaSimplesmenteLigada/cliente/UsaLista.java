@@ -38,6 +38,7 @@ public class UsaLista {
         listaProduto.inserirProduto(new Produto(17.22, "Água Saniária", "Limpeza"));
         listaProduto.inserirProduto(new Produto(10.99, "Coca-Cola", "Alimenticia"));
         listaProduto.inserirProduto(new Produto(19.70, "Alcool 70%", "Limpeza"));
+        listaProduto.inserirProduto(new Produto(5.70, "Lápis", "Escolar"));
 
         do {
             String[] opcoes = { // opções de escolha para entrar no programa, Lista de Contatos, Lista de Produtos ou sair do programa
@@ -166,7 +167,7 @@ public class UsaLista {
                                         "Digite o nome do produto a ser cadastrado");
                                 String precoProdutoString = JOptionPane.showInputDialog(null,
                                         "Digite o preço do produto a ser cadastrado");
-                                Object[] opcoesCategoria = { "Alimenticia", "Higiene Pessoal", "Limpeza" }; // Opções de categoria pré-definidas
+                                Object[] opcoesCategoria = { "Alimenticia", "Higiene Pessoal", "Limpeza", "Escolar" }; // Opções de categoria pré-definidas
                                 int categoriaSelecionada = JOptionPane.showOptionDialog(null,
                                         "Selecione a categoria do produto","Categoria do Produto", JOptionPane.DEFAULT_OPTION, 
                                         JOptionPane.DEFAULT_OPTION, null,opcoesCategoria, opcoesCategoria[0]);
@@ -220,7 +221,7 @@ public class UsaLista {
                                 break;
     
                             case 3: // opção para aplicar descontos aos produtos da Lista
-                                String[] categorias = { "Alimenticia", "Higiene Pessoal", "Limpeza" }; // categorias pré-definidas
+                                String[] categorias = { "Alimenticia", "Higiene Pessoal", "Limpeza", "Escolar" }; // categorias pré-definidas
                                 int index = JOptionPane.showOptionDialog(null,
                                         "Selecione a categoria do produto que deseja aplicar o desconto:",
                                         "Seleção de categoria", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION,
