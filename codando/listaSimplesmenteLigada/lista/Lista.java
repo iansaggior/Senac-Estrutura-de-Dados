@@ -30,20 +30,10 @@ public class Lista {
     }
 
     /**
-     * Método criado para exibir a lista dos contatos
+     * Método criado para exibir os elementos das lista desejadas
+     * @return elemento
      */
-    public void exibirContatos() {
-        Elemento x = inicio;
-        while (x != null) {
-            System.out.println(x.getObjeto());
-            x = x.getProx();
-        }
-    }
-
-    /**
-     * Método criado para exibir a lista dos produtos
-     */
-    public void exibirProdutos() {
+    public void exibirElemento() {
         Elemento x = inicio;
         while (x != null) {
             System.out.println(x.getObjeto());
