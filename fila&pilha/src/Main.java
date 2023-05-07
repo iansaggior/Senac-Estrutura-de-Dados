@@ -31,68 +31,162 @@ public class Main {
                     optionFila = JOptionPane.showOptionDialog(null, null, "OPÇÕES",
                             JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, optionsFila,
                             optionsFila[0]);
+                        // opções para escolha relacionadas a FILA
+                        switch (optionFila) {
 
-                    switch (optionFila) {
+                            case 0:
+                                objFila = JOptionPane.showInputDialog(null, "Digite o que deseja inserir na fila:");
+                                if (objFila == null) {
+                                    JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR ELEMENTO NA FILA!",
+                                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                    fila.enqueue(objFila);
+                                    JOptionPane.showMessageDialog(null, objFila + " ADICIONADO A FILA COM SUCESSO!",
+                                    "CONFIRMAÇÃO DA INSERÇÃO", JOptionPane.WARNING_MESSAGE);
+                                }
+                                break;
 
-                        case 0:
-                            objFila = JOptionPane.showInputDialog(null, "Digite o que deseja inserir na lista:");
-                            fila.enqueue(objFila);
-                            break;
-
-                        case 1:
-                            int optionRemover = JOptionPane.showConfirmDialog(
-                                    null, "Tem certeza que deseja remover o primeiro elemento da fila?", "OPÇÕES",
-                                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE);
-                            if (optionRemover == 0) {
-                                fila.dequeue();
-                                JOptionPane.showMessageDialog(null,
-                                        "Primeiro elemento da fila foi removido com sucesso",
-                                        "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.INFORMATION_MESSAGE);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Erro ao remover primeiro elemento da fila",
+                            case 1:
+                                int optionRemoverElemFila = JOptionPane.showConfirmDialog(
+                                        null, "Tem certeza que deseja remover o primeiro elemento da fila?", "OPÇÕES",
+                                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                if (optionRemoverElemFila == 0) {
+                                    if (fila.size() == 0) {
+                                        JOptionPane.showMessageDialog(null, "Erro ao remover primeiro elemento da fila, pois ela esta vazia!!",
                                         "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
-                            }
-                            break;
+                                    } else {
+                                        fila.dequeue();
+                                        JOptionPane.showMessageDialog(null,
+                                                "Primeiro elemento da fila foi removido com sucesso",
+                                                "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                } else if (fila.size() == 0) {
+                                    JOptionPane.showMessageDialog(null, "Erro ao remover ultimo elemento da fila, pois ela esta vazia!!",
+                                            "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Erro ao remover primeiro elemento da fila",
+                                            "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
+                                }
+                                break;
 
-                        case 2:
-                            JOptionPane.showMessageDialog(null, "O primeiro elemento da fila é: " + fila.front(),
-                                    "PRIMEIRO ELEMENTO DA FILA", JOptionPane.INFORMATION_MESSAGE);
-                            break;
+                            case 2:
+                                JOptionPane.showMessageDialog(null, "O primeiro elemento da fila é: " + fila.front(),
+                                        "PRIMEIRO ELEMENTO DA FILA", JOptionPane.INFORMATION_MESSAGE);
+                                break;
 
-                        case 3:
-                            if (fila.empty()) {
-                                JOptionPane.showMessageDialog(null, "Sim, a fila está vazia",
-                                        "A FILA ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Não, a fila não está vazia",
-                                        "A FILA ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
-                            }
-                            break;
+                            case 3:
+                                if (fila.empty()) {
+                                    JOptionPane.showMessageDialog(null, "Sim, a fila está vazia",
+                                            "A FILA ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Não, a fila não está vazia",
+                                            "A FILA ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                                break;
 
-                        case 4:
-                            JOptionPane.showMessageDialog(null, "Atualmente a fila tem " + fila.size() + " elementos",
-                                    "TAMNHO DA FILA", JOptionPane.INFORMATION_MESSAGE);
-                            break;
+                            case 4:
+                                JOptionPane.showMessageDialog(null, "Atualmente a fila tem " + fila.size() + " elemento(s)",
+                                        "TAMNHO DA FILA", JOptionPane.INFORMATION_MESSAGE);
+                                break;
 
-                        case 5:
-                            JOptionPane.showMessageDialog(null, "...SAINDO DA FILA...");
-                            break;
+                            case 5:
+                                JOptionPane.showMessageDialog(null, "...SAINDO DA FILA...");
+                                break;
 
-                        default: // saindo da fila
-                            JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA");
-                            break;
+                            default: // saindo da fila
+                                JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA");
+                                break;
 
-                    }
+                        }
                     break;
-                    case 1:
+
+                case 1:
+                String optionsPilha[] = {
+                    "INSERIR",
+                    "REMOVER",
+                    "PRIMEIRO ELEMENTO",
+                    "ESTÁ VAZIA?",
+                    "TAMANHO",
+                    "SAIR"
+            };
+            optionPilha = JOptionPane.showOptionDialog(null, null, "OPÇÕES",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, optionsPilha,
+                    optionsPilha[0]);
+                    // opções para escolha relacionadas a FILA
+                        switch (optionPilha) {
+
+                            case 0:
+                                objPilha = JOptionPane.showInputDialog(null, "Digite o que deseja inserir na pilha:");
+                                if (objPilha == null) {
+                                    JOptionPane.showMessageDialog(null, "ERRO AO ADICIONAR ELEMENTO NA PILHA!",
+                                    "ERROR", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                    pilha.push(objPilha);
+                                    JOptionPane.showMessageDialog(null, objFila + " ADICIONADO A PILHA COM SUCESSO!",
+                                    "CONFIRMAÇÃO DA INSERÇÃO", JOptionPane.WARNING_MESSAGE);
+                                }
+                        break;
+
+                            case 1:
+                                int optionRemoverElemnPilha = JOptionPane.showConfirmDialog(
+                                        null, "Tem certeza que deseja remover o primeiro elemento da pilha?", "OPÇÕES",
+                                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                if (optionRemoverElemnPilha == 0) {
+                                    if (pilha.size() == 0) {
+                                        JOptionPane.showMessageDialog(null, "Erro ao remover ultimo elemento da pilha, pois ela esta vazia!!",
+                                        "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                        pilha.pop();
+                                        JOptionPane.showMessageDialog(null,
+                                                "ultimo elemento da pilha foi removido com sucesso",
+                                                "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.INFORMATION_MESSAGE);
+
+                                    }
+                                } else if (pilha.size() == 0) {
+                                    JOptionPane.showMessageDialog(null, "Erro ao remover ultimo elemento da pilha, pois ela esta vazia!!",
+                                            "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Erro ao remover ultimo elemento da pilha",
+                                            "CONFIRMAÇÃO DA REMOÇÃO", JOptionPane.WARNING_MESSAGE);
+                                }
+                                break;
+
+                            case 2:
+                                JOptionPane.showMessageDialog(null, "O primeiro elemento da pilha é: " + pilha.top(),
+                                        "PRIMEIRO ELEMENTO DA pilha", JOptionPane.INFORMATION_MESSAGE);
+                                break;
+
+                            case 3:
+                                if (pilha.empty()) {
+                                    JOptionPane.showMessageDialog(null, "Sim, a pilha está vazia",
+                                            "A pilha ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Não, a pilha não está vazia",
+                                            "A pilha ESTÁ VAZIA?", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                                break;
+
+                            case 4:
+                                JOptionPane.showMessageDialog(null, "Atualmente a pilha tem " + pilha.size() + " elemento(s)",
+                                        "TAMNHO DA pilha", JOptionPane.INFORMATION_MESSAGE);
+                                break;
+
+                            case 5:
+                                JOptionPane.showMessageDialog(null, "...SAINDO DA pilha...");
+                                break;
+
+                            default: // saindo da fila
+                                JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA");
+                                break;
+                        }
 
                     break;
 
-                    case 2:
+                case 2:
                     JOptionPane.showMessageDialog(null, "bye", "ENCERRANDO O PROGRAMA...", JOptionPane.DEFAULT_OPTION);
                     break;
 
-                    default:                    
+                default:
                     JOptionPane.showMessageDialog(null, "bye", "ERROR...", JOptionPane.CANCEL_OPTION);
                     break;
             }
